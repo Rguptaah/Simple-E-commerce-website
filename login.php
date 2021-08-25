@@ -1,7 +1,7 @@
 <?php
 include("./includes/common.php");
 if (isset($_SESSION['email'])) {
-    header("location:index.php");
+    header("location:products.php");
 }
 ?>
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ if (isset($_SESSION['email'])) {
                         <label for="pass" class="d-block form-label">Password</label>
                         <input type="password" class="form-control" name="password" id="pass" required>
                     </div>
-                    <button type="submit" class="btn btn-primary d-block">Submit</button>
+                    <button type="submit" class="btn btn-primary d-block" name="submit"> Submit</button>
                 </form>
             </div>
             <div class="form-footer">

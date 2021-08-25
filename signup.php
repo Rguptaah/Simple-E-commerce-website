@@ -42,7 +42,7 @@ if (isset($_SESSION['email'])) {
             <div class="mb-3">
                 <input type="text" class="form-control" placeholder="Address" id="address" name="address" required>
             </div>
-            <button type="submit" class="btn btn-primary d-block w-auto">Submit</button>
+            <button type="submit" class="btn btn-primary d-block w-auto" name="submit">Submit</button>
         </form>
         </div>
         </form>
