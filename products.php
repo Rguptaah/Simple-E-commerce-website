@@ -18,19 +18,23 @@ if (!isset($_SESSION['email'])) {
 </head>
 
 <body>
-    <?php include("./includes/header.php"); ?>
+    <?php
+
+    include("./includes/header.php");
+    include("./includes/check_if_added.php");
+    ?>
     <section class="my-5">
         <div class="container py-5">
             <div class=" bg-secondary p-4 mb-2">
-                <h1>Welcome to our Lifestyle Store!</h1>
-                <p>We have the best cameras, watches and shirts for you. No need to hunt
+                <h1 class="text-center">Welcome to our Lifestyle Store!</h1>
+                <p class="text-center">We have the best cameras, watches and shirts for you. No need to hunt
                     around, we have all in one place.</p>
             </div>
-            <div class="row mt-3 g-3 text-center">
+            <div class="row item item mt-3 g-3 text-center">
                 <div class="col-md-3 col-sm-6 bg-white p-1" style="border:1px solid #f2f2f2;border-bottom:0">
                     <img src="./assets/Gallery/1.jpg" alt="camera" class="img-fluid card-img img-size">
                     <h3>Cannon EOS</h3>
-                    <p>Price Rs.36000</p>
+                    <p><?php echo " Price Rs.36000"; ?></p>
                     <button class="btn btn-primary w-100">Add to cart</button>
                 </div>
                 <div class="col-md-3 col-sm-6 bg-white p-1" style="border:1px solid #f2f2f2;border-bottom:0">
@@ -52,7 +56,7 @@ if (!isset($_SESSION['email'])) {
                     <button class="btn btn-primary w-100">Add to cart</button>
                 </div>
             </div>
-            <div class="row mt-3 text-center">
+            <div class="row item item mt-3 text-center">
                 <div class="col-md-3 col-sm-6 bg-white p-1" style="border:1px solid #f2f2f2;border-bottom:0">
                     <img src="./assets/Gallery/5.jpg" alt="camera" class="img-fluid card-img img-size">
                     <h3>Titan Model #301</h3>
@@ -78,7 +82,7 @@ if (!isset($_SESSION['email'])) {
                     <button class="btn btn-primary w-100">Add to cart</button>
                 </div>
             </div>
-            <div class="row mt-3 text-center">
+            <div class="row item item mt-3 text-center">
                 <div class="col-md-3 col-sm-6 bg-white p-1" style="border:1px solid #f2f2f2;border-bottom:0">
                     <img src="./assets/Gallery/9.jpg" alt="camera" class="img-fluid card-img img-size">
                     <h3>H&W</h3>
