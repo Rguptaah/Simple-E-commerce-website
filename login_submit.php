@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
         echo "There is no any user registered with this email";
     } else {
         $row = mysqli_fetch_array($result);
+        $name = $_SESSION['username'];
         $_SESSION['email'] = $email;
         $_SESSION['id'] = mysqli_insert_id($conn);
         header('location:products.php');

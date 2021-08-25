@@ -48,9 +48,14 @@ footer {
 }
 
 .img-size {
-    height: 150px;
+    width: 100%;
+    height: 120px;
 }
 
 .main {
     padding-top: 200px;
+}
+
+.item div {
+    height: 500px;
 }

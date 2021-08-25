@@ -13,13 +13,20 @@ if (isset($_POST['submit'])) {
     // if (!preg_match($regex_email, $email)) {
     //     echo "Incorrect email";
     // }
-
-    $qry = " INSERT INTO  `users` ( `username`, `email`, `password`, `contact`, `city`, `address` ) VALUES ('$name','$email','$pass','$contact','$city','$address') ";
-    $result = mysqli_query($conn, $qry);
-    if ($result == true) {
-        // echo "Successfully Inserted.";
-        header("location:login.php");
+    $select = " SELECT  * FROM `users` ";
+    $query = mysqli_query($conn, $select);
+    $row = mysqli_fetch_array($query);
+    if (mysqli_num_rows($query) == 0) {
+        echo "Email is already registered";
     } else {
-        echo "Error Occured";
+        $qry = " INSERT INTO  `users` ( `username`, `email`, `password`, `contact`, `city`, `address` ) VALUES ('$name','$email','$pass','$contact','$city','$address') ";
+        $result = mysqli_query($conn, $qry);
+        if ($result == true) {
+            $id = mysqli_insert_id($conn);
+            $_SESSION['id'];
+            header("location:products.php");
+        } else {
+            echo "Error Occured";
+        }
     }
 }
