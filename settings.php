@@ -3,11 +3,24 @@ include("./includes/common.php");
 if (!isset($_SESSION['email'])) {
     header("location:login.php");
 }
-if (isset($_SESSION['update'])) {
+if (isset($_POST['update'])) {
+    $email = $_SESSION['email'];
+    $old_password = $_POST['old_pass'];
     $new_password = $_POST['new_pass'];
     $retype_password = $_POST['retype_pass'];
-    if ($new_password ===  $retype_password) {
-        $u = "Update `users` where id = ";
+    $select = " SELECT * from `users` where email = '$email' ";
+    $query = mysqli_query($conn, $select);
+    $result = mysqli_fetch_array($query);
+    $id = $result['id'];
+    // echo ($id);
+    if ($old_password == $result['password']) {
+        if ($new_password ===  $retype_password) {
+            $u = " UPDATE `users` set password = '$new_password' where id = '$id' ";
+            $update = mysqli_query($conn, $u);
+            echo "<p style='color:green; text-align:center;'>Successfully Updated Password !!! </p>";
+        }
+    } else {
+        echo "<p style='color:red; text-align:center;' >Old password is not same as you entered earlier.</p>";
     }
 }
 ?>
@@ -33,7 +46,7 @@ if (isset($_SESSION['update'])) {
         <form class="py-5" action="" method="post">
             <h3 class="text-capitalize">change password</h3>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Old Password" id="old-pass" aria-describedby="emailHelp" required>
+                <input type="text" class="form-control" placeholder="Old Password" id="old-pass" name="old_pass" required>
             </div>
             <div class="mb-3">
                 <input type="password" class="form-control" placeholder="New Password" id="new-pass" name="new_pass" required>

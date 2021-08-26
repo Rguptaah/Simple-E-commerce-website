@@ -1,0 +1,12 @@
+/*Database Information*/
+
+You can make your database with name "ecommerce"
+Import .sql file to the database and enjoy the ecommerce website.
+
+
+To login you can use 
+email : sidarya321@gmail.com 
+password: 12345
+
+
+/* Thank You */

@@ -3,7 +3,7 @@ include('./includes/common.php');
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $pass = $_POST['password'];
+    $pass = md5($_POST['password']);
     $contact = $_POST['contact'];
     $city = $_POST['city'];
     $address = $_POST['address'];
@@ -13,10 +13,10 @@ if (isset($_POST['submit'])) {
     // if (!preg_match($regex_email, $email)) {
     //     echo "Incorrect email";
     // }
-    $select = " SELECT  * FROM `users` ";
+    $select = " SELECT  * FROM `users` where email ='$email' ";
     $query = mysqli_query($conn, $select);
     $row = mysqli_fetch_array($query);
-    if (mysqli_num_rows($query) == 0) {
+    if (mysqli_num_rows($query) > 0) {
         echo "Email is already registered";
     } else {
         $qry = " INSERT INTO  `users` ( `username`, `email`, `password`, `contact`, `city`, `address` ) VALUES ('$name','$email','$pass','$contact','$city','$address') ";
