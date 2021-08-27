@@ -14,7 +14,7 @@
                             <a class="nav-link" href="cart.php" name="cart"><i class="fa fa-shopping-cart"></i> &nbsp;Cart </a>
                         </li>
                         <li class="nav-item p-1">
-                            <a class="nav-link" href="settings.php" name="settings"><i class="fa fa-user"></i> &nbsp;Settings</a>
+                            <a class="nav-link" href="settings.php?id=<?php echo $_SESSION['id']; ?>" name="settings"><i class="fa fa-user"></i> &nbsp;Settings</a>
                         </li>
                         <li class="nav-item p-1">
                             <a class="nav-link" href="logout_script.php" name="logout"> <i class="fa fa-sign-out"></i>&nbsp;Logout</a>

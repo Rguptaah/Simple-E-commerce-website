@@ -9,9 +9,10 @@ if (isset($_POST['submit'])) {
         echo "There is no any user registered with this email";
     } else {
         $row = mysqli_fetch_array($result);
-        $name = $row['username'];
+        $id = $row['id'];
+        // $pass = $row['password'];
         $_SESSION['email'] = $email;
-        $_SESSION['id'] = mysqli_insert_id($conn);
+        $_SESSION['id'] = $id;
         header('location:products.php');
     }
 }

@@ -4,23 +4,29 @@ if (!isset($_SESSION['email'])) {
     header("location:login.php");
 }
 if (isset($_POST['update'])) {
+
     $email = $_SESSION['email'];
-    $old_password = $_POST['old_pass'];
-    $new_password = $_POST['new_pass'];
-    $retype_password = $_POST['retype_pass'];
+    $old_password = md5($_POST['old_pass']);
+    $new_password = md5($_POST['new_pass']);
+    $retype_password = md5($_POST['retype_pass']);
     $select = " SELECT * from `users` where email = '$email' ";
-    $query = mysqli_query($conn, $select);
-    $result = mysqli_fetch_array($query);
-    $id = $result['id'];
+    $result = mysqli_query($conn, $select);
+    $row = mysqli_fetch_array($result);
+    $password = $row['password'];
+    $id = $_REQUEST['id'];
     // echo ($id);
-    if ($old_password == $result['password']) {
-        if ($new_password ===  $retype_password) {
-            $u = " UPDATE `users` set password = '$new_password' where id = '$id' ";
+    if ($password == $old_password) {
+        if ($new_password == $retype_password) {
+            $u = " UPDATE `users` set password = '$new_password' where id = '$id'";
             $update = mysqli_query($conn, $u);
             echo "<p style='color:green; text-align:center;'>Successfully Updated Password !!! </p>";
+        } else {
+            echo "password is not matching.";
+            header("Location:settings.php");
         }
     } else {
-        echo "<p style='color:red; text-align:center;' >Old password is not same as you entered earlier.</p>";
+        echo "<p style='color:red; text-align:center;' >Old password does not match.</p>";
+        header("location:settings.php");
     }
 }
 ?>
@@ -43,7 +49,7 @@ if (isset($_POST['update'])) {
 <body>
     <?php include("./includes/header.php"); ?>
     <section class="my-5 mx-auto w-25">
-        <form class="py-5" action="" method="post">
+        <form class="py-5" action="success.php" method="post">
             <h3 class="text-capitalize">change password</h3>
             <div class="mb-3">
                 <input type="text" class="form-control" placeholder="Old Password" id="old-pass" name="old_pass" required>

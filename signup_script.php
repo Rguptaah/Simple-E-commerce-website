@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
         $result = mysqli_query($conn, $qry);
         if ($result == true) {
             $id = mysqli_insert_id($conn);
-            $_SESSION['id'];
+            $_SESSION['id'] = $id;
             header("location:products.php");
         } else {
             echo "Error Occured";
